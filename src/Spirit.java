@@ -23,6 +23,8 @@ public class Spirit {
         width = 150;
         height = 150;
         isAlive = true;
+        rec=new Rectangle(xpos,ypos,width,height);
+
     }
         public void move(){
             xpos = xpos + dx;

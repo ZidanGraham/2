@@ -13,8 +13,10 @@ public class Villan {
     public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
     public Rectangle rec;
 
+    public Image Pic;
 
-    public Villan(int pXpos, int pYpos, int pDx, int pDy) {
+
+    public Villan(int pXpos, int pYpos, int pDx, int pDy, Image pPic) {
         xpos = pXpos;
         ypos = pYpos;
         dx = pDx;
@@ -22,13 +24,16 @@ public class Villan {
         width = 100;
         height = 100;
         isAlive = true;
+        Pic=pPic;
+        rec=new Rectangle(xpos,ypos,width,height);
+
     }
 
     public void move() {
         xpos = xpos + dx;
         ypos = ypos + dy;
 
-        //bounce off keft and right sides
+//wrap around in x direction
         if (xpos > 1000) {
             xpos = 0;
         }
@@ -37,9 +42,12 @@ public class Villan {
             xpos = 1000;
         }
         //wrap around screen in y direction
-        if (ypos > 700) {
+       if (ypos > 1000) {
             ypos = 0;
         }
+       if (ypos < 0) {
+           ypos = 1000;
+       }
         rec=new Rectangle(xpos,ypos,width,height);
     }
 
